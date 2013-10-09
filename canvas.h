@@ -19,6 +19,11 @@ protected:
     void resizeGL(int x, int h);
     void paintGL();
 
+    bool event(QEvent *event);
+
+    void exposeEvent(QExposeEvent *event);
+    void resizeEvent(QResizeEvent *event);
+
 private:
     double xMin, xMax, yMin, yMax;
 //    const int v1x;
