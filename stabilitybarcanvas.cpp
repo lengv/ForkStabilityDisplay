@@ -4,9 +4,10 @@ stabilityBarCanvas::stabilityBarCanvas(QWidget *parent) :
     QGLWidget(parent)
 {
     xMin = 0;
-    xMax = 10;
+    xMax = 4;
     yMin = 0;
     yMax = 10;
+    db = 1;
 }
 
 void stabilityBarCanvas::initializeGL()
@@ -50,24 +51,33 @@ void stabilityBarCanvas::resizeGL(int width, int height)
 
 void stabilityBarCanvas::paintGL()
 {
+    float mult = 0.8;
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
-    glTranslated(5.0, 5.0, 0.0);
+    glTranslated(0.0, -4.0, 0.0);
     glLineWidth(1);
-    glColor3f(0, 0.7f, 0.7f);
+    glColor3f(1.0f*(1-mult), 1.0f*mult, 0.05f);
 
     glBegin(GL_POLYGON);
-    glVertex2f(-3,3);
-    glVertex2f(3,3);
-    glVertex2f(0,-3);
+        glVertex2f(1,1);
+        glVertex2f(3,1);
+        glVertex2f(3,9*mult+1);
+        glVertex2f(1,9*mult+1);
     glEnd();
 
     glLineWidth(2);
     glColor3f(0, 1, 0);
 
+
+
 //    glBegin(GL_LINE_LOOP);
 
 //            glVertex2f(-3,3);
 //    glEnd();
+}
+
+void stabilityBarCanvas::set_db(double _db)
+{
+    db = _db;
 }

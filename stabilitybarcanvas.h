@@ -8,7 +8,8 @@ class stabilityBarCanvas : public QGLWidget
     Q_OBJECT
 public:
     explicit stabilityBarCanvas(QWidget *parent = 0);
-    
+    void set_db(double _db);
+
 signals:
     
 public slots:
@@ -21,7 +22,7 @@ protected:
 private:
     double xMin, xMax, yMin, yMax;
 
-
+    double db;
 };
 
 #endif // STABILITYBARCANVAS_H

@@ -7,7 +7,7 @@ class canvas : public QGLWidget
 {
     Q_OBJECT
 public:
-    explicit canvas(QWidget *parent = 0);
+    explicit canvas(QWidget *parent =2 );
     
 signals:
     
@@ -19,10 +19,10 @@ protected:
     void resizeGL(int x, int h);
     void paintGL();
 
-    bool event(QEvent *event);
+    //bool event(QEvent *event);
 
-    void exposeEvent(QExposeEvent *event);
-    void resizeEvent(QResizeEvent *event);
+    //void exposeEvent(QExposeEvent *event);
+    //void resizeEvent(QResizeEvent *event);
 
 private:
     double xMin, xMax, yMin, yMax;
@@ -32,6 +32,7 @@ private:
 //    const int v2y;
 //    const int v3x;
 //    const int v3y;
+    double xZMP, yZMP;
 };
 
 #endif // CANVAS_H

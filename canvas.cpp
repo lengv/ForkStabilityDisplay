@@ -10,6 +10,8 @@ canvas::canvas(QWidget *parent) :
     xMax = 10;
     yMin = 0;
     yMax = 10;
+    xZMP = 0;
+    yZMP = 0;
 }
 
 
@@ -55,19 +57,30 @@ void canvas::paintGL()
     glLoadIdentity();
 
     glTranslated(5.0, 5.0, 0.0);
-    glLineWidth(1);
-    glColor3f(0, 0.7f, 0.7f);
+    glLineWidth(3);
 
-    glBegin(GL_POLYGON);
+    double db = 0.5;
+
+    glBegin(GL_LINE_LOOP);
+    glColor3f(0.0f+(1-db), db, 0.0f);
     glVertex2f(-3,3);
+    glColor3f(0.0f+(1-db), db, 0.0f);
     glVertex2f(3,3);
+    glColor3f(0.0f+(1-db), db, 0.0f);
     glVertex2f(0,-3);
     glEnd();
 
     glLineWidth(2);
     glColor3f(0, 1, 0);
 
+    glPointSize(10.0f);
+    glBegin(GL_POINTS);
+        glColor3f(1.0f,0.0f,0.0f);
+        glVertex2f(xZMP,yZMP);
+    glEnd();
+
 //    glBegin(GL_LINE_LOOP);
+    //GL_POLYGON
 
 //            glVertex2f(-3,3);
 //    glEnd();
